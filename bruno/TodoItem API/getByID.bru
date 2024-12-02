@@ -1,0 +1,15 @@
+meta {
+  name: getByID
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/getByID/:toDoItemId
+  body: none
+  auth: none
+}
+
+params:path {
+  toDoItemId: 
+}

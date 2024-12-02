@@ -1,0 +1,18 @@
+meta {
+  name: save
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/{{item}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "listId": "1733151817626",
+    "name": "Clean bedroom"
+  }
+}

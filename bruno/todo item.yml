@@ -1,0 +1,88 @@
+openapi: 3.0.3
+info:
+  title: TodoItem API
+  description: API for managing Todo Items
+  version: 1.0.0
+servers:
+  - url: /item
+paths:
+  /save:
+    post:
+      summary: save
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TodoItemSaveParameters"
+      responses:
+        "201":
+          description: Todo Item created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TodoItem"
+  /getByID/{toDoItemId}:
+    get:
+      summary: getByID
+      parameters:
+        - name: toDoItemId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Todo Item found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TodoItem"
+        "404":
+          description: Todo Item not found
+  /deleteByID/{toDoItemId}:
+    delete:
+      summary: deleteByID
+      parameters:
+        - name: toDoItemId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Todo Item deleted successfully
+        "404":
+          description: Todo Item not found
+  /get:
+    get:
+      summary: get
+      responses:
+        "200":
+          description: List of Todo Items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TodoItem"
+components:
+  schemas:
+    TodoItemSaveParameters:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Buy groceries"
+    TodoItem:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "1"
+        name:
+          type: string
+          example: "Buy groceries"
+        completed:
+          type: boolean
+          example: false

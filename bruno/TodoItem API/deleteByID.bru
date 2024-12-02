@@ -1,0 +1,15 @@
+meta {
+  name: deleteByID
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{baseUrl}}/deleteByID/:toDoItemId
+  body: none
+  auth: none
+}
+
+params:path {
+  toDoItemId: 
+}
