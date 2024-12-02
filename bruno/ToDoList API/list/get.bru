@@ -1,11 +1,11 @@
 meta {
-  name: list
+  name: get
   type: http
   seq: 1
 }
 
 get {
-  url: {{api}}list/listId
+  url: {{baseUrl}}/{{list}}
   body: none
   auth: none
 }
